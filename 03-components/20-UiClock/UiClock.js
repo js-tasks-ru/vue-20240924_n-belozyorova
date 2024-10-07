@@ -1,4 +1,4 @@
-import { ref, computed, defineComponent, onBeforeUnmount } from 'vue'
+import {ref, computed, defineComponent, onUnmounted } from 'vue'
 
 export default defineComponent({
   name: 'UiClock',
@@ -11,7 +11,7 @@ export default defineComponent({
       return new Intl.DateTimeFormat('en-EN', {timeStyle: 'medium'}).format(nowTimestamp.value)
     })
     
-    onBeforeUnmount(() => {
+    onUnmounted(() => {
       clearInterval(interval)
     })
 
